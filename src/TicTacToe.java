@@ -21,19 +21,21 @@ public class TicTacToe {
         board[row][col] = xOrO;
         if(turns>=5) {
             // TODO check winner here
-            // horizontal
-            boolean winner = false;
-            for(int j = 0; j<3; j++) {
-                if(board[row][j]!=xOrO) {
-                    break;
-                }
-                winner = true;
-                System.out.println();
-            }
+//            String
+
         }
         return true;
     }
-
+    String checkWinner(char xOrO, int row, int col) {
+        // horizontal
+        boolean winner = true;
+        for(int j = 0; j<3; j++) {
+            if(board[row][j]!=xOrO) {
+                winner = false;
+                break;
+            }
+        }
+    }
     void printBoard() {
         System.out.println("__________");
         System.out.println("|"+board[0][0]+"| |"+board[0][1]+"| |"+board[0][2]+"|");
