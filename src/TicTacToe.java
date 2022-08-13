@@ -21,12 +21,15 @@ public class TicTacToe {
         board[row][col] = xOrO;
         if(turns>=5) {
             // TODO check winner here
-//            String
+            boolean winner = checkWinner(xOrO, row, col);
+            if(winner) {
+
+            }
 
         }
         return true;
     }
-    String checkWinner(char xOrO, int row, int col) {
+    boolean checkWinner(char xOrO, int row, int col) {
         // horizontal
         boolean winner = true;
         for(int j = 0; j<3; j++) {
@@ -35,6 +38,17 @@ public class TicTacToe {
                 break;
             }
         }
+        if(winner) return true;
+
+        for(int i = 0; i<3; i++) {
+            if(board[i][col]!=xOrO) {
+                winner = false;
+                break;
+            }
+        }
+        if(winner) return true;
+
+        return false;
     }
     void printBoard() {
         System.out.println("__________");
@@ -60,10 +74,11 @@ public class TicTacToe {
             int row = s.nextInt();
             int col = s.nextInt();
 
-            while(!checkValidIfWinner(row, col, currentPlayer, turns)) {
+            while(turns<10&&!checkValidIfWinner(row, col, currentPlayer, turns)) {
                 row = s.nextInt();
                 col = s.nextInt();
             }
+
             // TODO Print board
             printBoard();
             turns++;
